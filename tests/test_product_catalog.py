@@ -1,14 +1,10 @@
-import pytest
+from src.product_catalog import Category, Product
 
-from src.product_catalog import *
 
 def test_product_init():
     # Создаем тестовый продукт
     product = Product(
-        name="iPhone 14",
-        description="Смартфон Apple",
-        price=79990.0,
-        quantity=10
+        name="iPhone 14", description="Смартфон Apple", price=79990.0, quantity=10
     )
 
     # Проверяем корректность инициализации
@@ -81,10 +77,7 @@ def test_invalid_quantity():
 def test_change_attributes():
     # Создаем продукт для проверки изменения атрибутов
     product = Product(
-        name="iPhone 14",
-        description="Смартфон Apple",
-        price=79990.0,
-        quantity=10
+        name="iPhone 14", description="Смартфон Apple", price=79990.0, quantity=10
     )
 
     # Изменяем атрибуты
@@ -99,7 +92,9 @@ def test_change_attributes():
     assert product.price == 99990.0
     assert product.quantity == 5
 
+
 # =====
+
 
 def test_category_init():
     # Создаем тестовые продукты
@@ -110,7 +105,7 @@ def test_category_init():
     category = Category(
         name="Смартфоны",
         description="Категория смартфонов",
-        products=[product1, product2]
+        products=[product1, product2],
     )
 
     # Проверяем инициализацию
@@ -124,9 +119,7 @@ def test_category_init():
 def test_category_without_products():
     # Создаем категорию без продуктов
     category = Category(
-        name="Планшеты",
-        description="Категория планшетов",
-        products=None
+        name="Планшеты", description="Категория планшетов", products=None
     )
 
     # Проверяем инициализацию
@@ -159,7 +152,7 @@ def test_product_count():
     category = Category(
         name="Смартфоны",
         description="Категория смартфонов",
-        products=[product1, product2, product3]
+        products=[product1, product2, product3],
     )
 
     # Проверяем счетчик продуктов
@@ -198,5 +191,3 @@ def test_invalid_init():
         assert False, "Должна быть ошибка при неверном типе списка продуктов"
     except ValueError:
         pass
-
-

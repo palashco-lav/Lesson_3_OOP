@@ -1,5 +1,6 @@
 import json
 
+
 class Product:
     name: str  # название
     description: str  # описание
@@ -33,9 +34,9 @@ class Category:
     total_categories = 0
     total_products = 0
 
-    name: str               # название
-    description: str        # описание
-    products: list[Product] # список товаров категории
+    name: str  # название
+    description: str  # описание
+    products: list[Product]  # список товаров категории
 
     def __init__(self, name, description, products):
         # Валидация имени категории
@@ -54,7 +55,9 @@ class Category:
                 raise ValueError("Список продуктов должен быть типа list")
             for product in products:
                 if not isinstance(product, Product):
-                    raise ValueError("Все элементы списка продуктов должны быть объектами класса Product")
+                    raise ValueError(
+                        "Все элементы списка продуктов должны быть объектами класса Product"
+                    )
         self.products = products if products else []
 
         # При создании нового объекта увеличиваем счетчики
@@ -69,34 +72,34 @@ class Category:
     def product_count(self):
         return self.total_products
 
-def load_data_from_json(file_path) -> list[dict]:
+
+def load_data_from_json(file_path) -> list[str]:
     """
-        Функция для загрузки данных из JSON файла и создания объектов классов Category и Product.
+    Функция для загрузки данных из JSON файла и создания объектов классов Category и Product.
 
-        Параметры:
-        file_path (str): путь к JSON файлу с данными.
+    Параметры:
+    file_path (str): путь к JSON файлу с данными.
 
-        Возвращает:
-        list[Category]: список объектов класса Category, созданных на основе данных из файла.
-        """
+    Возвращает:
+    list[Category]: список объектов класса Category, созданных на основе данных из файла.
+    """
     categories = []
-    with open(file_path, 'r', encoding='utf-8') as file:
+    with open(file_path, "r", encoding="utf-8") as file:
         data = json.load(file)
 
     for category_data in data:
-        name = category_data['name']
-        description = category_data['description']
+        name = category_data["name"]
+        description = category_data["description"]
         products = [
             Product(
-                product_data['name'],
-                product_data['description'],
-                product_data['price'],
-                product_data['quantity']
+                product_data["name"],
+                product_data["description"],
+                product_data["price"],
+                product_data["quantity"],
             )
-            for product_data in category_data['products']
+            for product_data in category_data["products"]
         ]
         category = Category(name, description, products)
         categories.append(category.name)
 
     return categories
-
