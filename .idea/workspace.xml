@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="09d26259-e061-41fc-aad3-be8f53691e2a" name="Changes" comment="Версия после применения black, flake8, isort, n=mypy" />
+    <list default="true" id="09d26259-e061-41fc-aad3-be8f53691e2a" name="Changes" comment="Версия после применения black, flake8, isort, n=mypy">
+      <change afterPath="$PROJECT_DIR$/src/catalog.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/product.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_catalog.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_product.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/product_catalog.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_product_catalog.py" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,6 +63,8 @@
     "Python tests.Python tests for test_product_catalog.test_invalid_name.executor": "Run",
     "Python tests.Python tests for test_product_catalog.test_product_count.executor": "Run",
     "Python tests.Python tests for test_product_catalog.test_product_init.executor": "Debug",
+    "Python tests.Python tests in test_catalog.py.executor": "Run",
+    "Python tests.Python tests in test_product.py.executor": "Run",
     "Python tests.Python tests in test_product_catalog.py.executor": "Debug",
     "Python.main.executor": "Debug",
     "Python.test_product_catalog.executor": "Run",
@@ -70,7 +80,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Lesson_3_OOP" />
       <option name="ENV_FILES" value="" />
@@ -188,7 +198,7 @@
       <workItem from="1747078848550" duration="2036000" />
       <workItem from="1747080908347" duration="10000" />
       <workItem from="1747081003235" duration="3049000" />
-      <workItem from="1747084124963" duration="2423000" />
+      <workItem from="1747084124963" duration="3396000" />
     </task>
     <task id="LOCAL-00001" summary="Первая версия">
       <option name="closed" value="true" />
@@ -206,7 +216,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747086365807</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Версия после применения black, flake8, isort, n=mypy">
+      <option name="closed" value="true" />
+      <created>1747086619608</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1747086619608</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -240,29 +258,8 @@
     <MESSAGE value="Версия после применения black, flake8, isort, n=mypy" />
     <option name="LAST_COMMIT_MESSAGE" value="Версия после применения black, flake8, isort, n=mypy" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/tests/test_product_catalog.py</url>
-          <line>98</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/product_catalog.py</url>
-          <line>101</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/product_catalog.py</url>
-          <line>86</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Lesson_3_OOP$.coverage" NAME=" Coverage Results" MODIFIED="1747082699278" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/Lesson_3_OOP$.coverage" NAME=" Coverage Results" MODIFIED="1747168099104" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/Lesson_3_OOP$main.coverage" NAME="main Coverage Results" MODIFIED="1747085392068" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/Lesson_3_OOP$test_product_catalog.coverage" NAME="test_product_catalog Coverage Results" MODIFIED="1747080684270" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
   </component>
