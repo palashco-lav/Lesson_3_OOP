@@ -1,4 +1,5 @@
-from src.product import *
+from src.product import Product
+
 
 class Category:
     # Атрибуты класса для хранения общей информации
@@ -7,7 +8,7 @@ class Category:
 
     name: str  # название
     description: str  # описание
-    products: list[Product]  # список товаров категории
+    __products: list[Product]  # список товаров категории
 
     def __init__(self, name, description, products):
         # Валидация имени категории
@@ -29,11 +30,11 @@ class Category:
                     raise ValueError(
                         "Все элементы списка продуктов должны быть объектами класса Product"
                     )
-        self.products = products if products else []
+        self.__products = products if products else []
 
         # При создании нового объекта увеличиваем счетчики
         Category.total_categories += 1
-        Category.total_products += len(self.products)
+        Category.total_products += len(self.__products)
 
     @property
     def category_count(self):
@@ -42,3 +43,20 @@ class Category:
     @property
     def product_count(self):
         return self.total_products
+
+    @property
+    def category_product_count(self):
+        return len(self.__products)
+
+    @property
+    def get_product_info(self):
+        result = ""
+        for product in self.__products:
+            result += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
+        return result
+
+    def add_product(self, product: Product):
+        if not isinstance(product, Product):
+            raise ValueError("Продукт должен быть объектом класса Product")
+        self.__products.append(product)
+        Category.total_products += 1
