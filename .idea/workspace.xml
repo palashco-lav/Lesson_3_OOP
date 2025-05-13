@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="09d26259-e061-41fc-aad3-be8f53691e2a" name="Changes" comment="Первая версия">
-      <change afterPath="$PROJECT_DIR$/.flake8" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/poetry.lock" beforeDir="false" afterPath="$PROJECT_DIR$/poetry.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/product_catalog.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/product_catalog.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_product_catalog.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_product_catalog.py" afterDir="false" />
-    </list>
+    <list default="true" id="09d26259-e061-41fc-aad3-be8f53691e2a" name="Changes" comment="Версия после применения black, flake8, isort, n=mypy" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,7 +20,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -67,7 +59,7 @@
     "Python.main.executor": "Debug",
     "Python.test_product_catalog.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "develop",
+    "git-widget-placeholder": "homework__14.1",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -196,7 +188,7 @@
       <workItem from="1747078848550" duration="2036000" />
       <workItem from="1747080908347" duration="10000" />
       <workItem from="1747081003235" duration="3049000" />
-      <workItem from="1747084124963" duration="2006000" />
+      <workItem from="1747084124963" duration="2423000" />
     </task>
     <task id="LOCAL-00001" summary="Первая версия">
       <option name="closed" value="true" />
@@ -206,7 +198,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747085529545</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Версия после применения black, flake8, isort, n=mypy">
+      <option name="closed" value="true" />
+      <created>1747086365807</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1747086365807</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -237,7 +237,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Первая версия" />
-    <option name="LAST_COMMIT_MESSAGE" value="Первая версия" />
+    <MESSAGE value="Версия после применения black, flake8, isort, n=mypy" />
+    <option name="LAST_COMMIT_MESSAGE" value="Версия после применения black, flake8, isort, n=mypy" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
