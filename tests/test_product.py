@@ -151,3 +151,17 @@ def test_lower_price():
     with patch("builtins.input", return_value="n"):
         product.price = new_price
         assert product.price == original_price, "Цена была понижена несмотря на отмену"
+
+
+def test_str():
+    product = Product("Смартфон", "Современный смартфон", 1000.0, 5)
+    expected_str = "Смартфон, 1000.0 руб. Остаток: 5"
+    assert str(product) == expected_str
+
+
+def test_add():
+    product1 = Product("Смартфон", "Современный смартфон", 1000.0, 5)
+    product2 = Product("Ноутбук", "Мощный ноутбук", 5000.0, 2)
+    total_price = product1 + product2
+    expected_total_price = 1000.0 * 5 + 5000.0 * 2
+    assert total_price == expected_total_price

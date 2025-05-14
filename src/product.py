@@ -26,6 +26,13 @@ class Product:
             raise ValueError("Количество должно быть положительным целым числом")
         self.quantity = quantity
 
+    def __str__(self) -> str:
+        # Название продукта, 80 руб. Остаток: 15 шт.
+        return f"{self.name}, {self.__price} руб. Остаток: {self.quantity}"
+
+    def __add__(self, other):
+        return self.quantity * self.__price + other.quantity * other.__price
+
     @property
     def price(self):
         return self.__price
