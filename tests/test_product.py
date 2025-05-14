@@ -1,6 +1,6 @@
 from unittest.mock import patch
 
-from src.product import Product
+from src.product import LawnGrass, Product, Smartphone
 
 
 def test_product_init():
@@ -165,3 +165,49 @@ def test_add():
     total_price = product1 + product2
     expected_total_price = 1000.0 * 5 + 5000.0 * 2
     assert total_price == expected_total_price
+
+
+def test_smartphone():
+    # Создаём экземпляр класса Smartphone
+    smartphone = Smartphone(
+        "Iphone 14",
+        "Смартфон с улучшенными характеристиками",
+        1000.0,
+        5,
+        8.5,
+        "14 Pro Max",
+        256,
+        "Black",
+    )
+
+    # Проверяем атрибуты
+    assert smartphone.name == "Iphone 14"
+    assert smartphone.description == "Смартфон с улучшенными характеристиками"
+    assert smartphone.price == 1000.0
+    assert smartphone.quantity == 5
+    assert smartphone.efficiency == 8.5
+    assert smartphone.model == "14 Pro Max"
+    assert smartphone.memory == 256
+    assert smartphone.color == "Black"
+
+
+def test_lawn_grass():
+    # Создаём экземпляр класса LawnGrass
+    lawn_grass = LawnGrass(
+        "Трава для газона",
+        "Высококачественная трава для газона",
+        50.0,
+        10,
+        "Россия",
+        30,
+        "Зеленый",
+    )
+
+    # Проверяем атрибуты
+    assert lawn_grass.name == "Трава для газона"
+    assert lawn_grass.description == "Высококачественная трава для газона"
+    assert lawn_grass.price == 50.0
+    assert lawn_grass.quantity == 10
+    assert lawn_grass.country == "Россия"
+    assert lawn_grass.germination_period == 30
+    assert lawn_grass.color == "Зеленый"

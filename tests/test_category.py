@@ -103,20 +103,26 @@ def test_invalid_init():
 
 
 def test_add_product():
+    # Создаём несколько продуктов
+    product1 = Product("Смартфон", "Современный смартфон с большим экраном", 1000.0, 10)
+    product2 = Product("Ноутбук", "Мощный ноутбук для работы", 5000.0, 5)
+
     # Создаём категорию
     category = Category("Электроника", "Электронные устройства", [])
 
-    # Создаём продукт
-    product = Product("Смартфон", "Современный смартфон с большим экраном", 1000.0, 10)
+    # Добавляем продукты в категорию
+    category.add_product(product1)
+    category.add_product(product2)
 
-    # Добавляем продукт в категорию
-    category.add_product(product)
+    # Проверяем, что продукты были добавлены
+    assert product1 in category._Category__products
+    assert product2 in category._Category__products
 
-    # Проверяем, что продукт добавлен в список продуктов категории
-    assert product in category._Category__products
+    # Проверяем общее количество продуктов в категории
+    assert category.category_product_count == 2
 
-    # Проверяем, что общее количество продуктов увеличилось
-    assert category.total_products == 6
+    # Проверяем общее количество товаров во всех категориях
+    assert Category.total_products == 7
 
 
 def test_get_product_info():
