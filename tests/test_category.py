@@ -1,99 +1,8 @@
-from src.product_catalog import Category, Product
+from io import StringIO
+from unittest.mock import patch
 
-
-def test_product_init():
-    # Создаем тестовый продукт
-    product = Product(
-        name="iPhone 14", description="Смартфон Apple", price=79990.0, quantity=10
-    )
-
-    # Проверяем корректность инициализации
-    assert product.name == "iPhone 14"
-    assert product.description == "Смартфон Apple"
-    assert product.price == 79990.0
-    assert product.quantity == 10
-
-
-def test_invalid_name():
-    # Проверяем валидацию имени
-    try:
-        Product(123, "Описание", 100.0, 5)
-        assert False, "Должна быть ошибка при неверном типе имени"
-    except ValueError:
-        pass
-
-    try:
-        Product("", "Описание", 100.0, 5)
-        assert False, "Должна быть ошибка при пустом имени"
-    except ValueError:
-        pass
-
-
-def test_invalid_description():
-    # Проверяем валидацию описания
-    try:
-        Product("Продукт", 123, 100.0, 5)
-        assert False, "Должна быть ошибка при неверном типе описания"
-    except ValueError:
-        pass
-
-    try:
-        Product("Продукт", "", 100.0, 5)
-        assert False, "Должна быть ошибка при пустом описании"
-    except ValueError:
-        pass
-
-
-def test_invalid_price():
-    # Проверяем валидацию цены
-    try:
-        Product("Продукт", "Описание", "сто рублей", 5)
-        assert False, "Должна быть ошибка при неверном типе цены"
-    except ValueError:
-        pass
-
-    try:
-        Product("Продукт", "Описание", -100.0, 5)
-        assert False, "Должна быть ошибка при отрицательной цене"
-    except ValueError:
-        pass
-
-
-def test_invalid_quantity():
-    # Проверяем валидацию количества
-    try:
-        Product("Продукт", "Описание", 100.0, "пять")
-        assert False, "Должна быть ошибка при неверном типе количества"
-    except ValueError:
-        pass
-
-    try:
-        Product("Продукт", "Описание", 100.0, -5)
-        assert False, "Должна быть ошибка при отрицательном количестве"
-    except ValueError:
-        pass
-
-
-def test_change_attributes():
-    # Создаем продукт для проверки изменения атрибутов
-    product = Product(
-        name="iPhone 14", description="Смартфон Apple", price=79990.0, quantity=10
-    )
-
-    # Изменяем атрибуты
-    product.name = "iPhone 14 Pro"
-    product.description = "Флагманский смартфон Apple"
-    product.price = 99990.0
-    product.quantity = 5
-
-    # Проверяем измененные значения
-    assert product.name == "iPhone 14 Pro"
-    assert product.description == "Флагманский смартфон Apple"
-    assert product.price == 99990.0
-    assert product.quantity == 5
-
-
-# =====
+from src.category import Category
+from src.product import Product
 
 
 def test_category_init():
@@ -111,7 +20,7 @@ def test_category_init():
     # Проверяем инициализацию
     assert category.name == "Смартфоны"
     assert category.description == "Категория смартфонов"
-    assert len(category.products) == 2
+    assert category.category_product_count == 2
     assert Category.total_categories == 1
     assert Category.total_products == 2
 
@@ -125,7 +34,7 @@ def test_category_without_products():
     # Проверяем инициализацию
     assert category.name == "Планшеты"
     assert category.description == "Категория планшетов"
-    assert len(category.products) == 0
+    assert category.category_product_count == 0
     assert Category.total_categories == 2
     assert Category.total_products == 2  # не изменилось, так как нет продуктов
 
@@ -191,3 +100,37 @@ def test_invalid_init():
         assert False, "Должна быть ошибка при неверном типе списка продуктов"
     except ValueError:
         pass
+
+
+def test_add_product():
+    # Создаём категорию
+    category = Category("Электроника", "Электронные устройства", [])
+
+    # Создаём продукт
+    product = Product("Смартфон", "Современный смартфон с большим экраном", 1000.0, 10)
+
+    # Добавляем продукт в категорию
+    category.add_product(product)
+
+    # Проверяем, что продукт добавлен в список продуктов категории
+    assert product in category._Category__products
+
+    # Проверяем, что общее количество продуктов увеличилось
+    assert category.total_products == 6
+
+
+def test_get_product_info():
+    # Создаём несколько продуктов
+    product1 = Product("Смартфон", "Современный смартфон с большим экраном", 1000.0, 10)
+    product2 = Product("Ноутбук", "Мощный ноутбук для работы", 5000.0, 5)
+
+    # Создаём категорию и добавляем продукты
+    category = Category("Электроника", "Электронные устройства", [product1, product2])
+
+    # Проверяем вывод информации о продуктах
+    expected_output = (
+        "Смартфон, 1000.0 руб. Остаток: 10 шт.\n" "Ноутбук, 5000.0 руб. Остаток: 5 шт."
+    )
+    with patch("sys.stdout", new=StringIO()) as fake_out:
+        print(category.get_product_info)
+        assert fake_out.getvalue().strip() == expected_output.strip()
