@@ -36,6 +36,21 @@ class Category:
         Category.total_categories += 1
         Category.total_products += len(self.__products)
 
+    def __str__(self):
+        sum_products = 0
+        # Суммирую общее кол-во продуктов
+        for product in self.__products:
+            sum_products += product.quantity
+        # Название категории, количество продуктов: 200 шт.
+        return f"{self.name}, количество продуктов: {sum_products}"
+
+    @property
+    def products(self):
+        result = ""
+        for product in self.__products:
+            result += product.__str__() + "\n"
+        return result
+
     @property
     def category_count(self):
         return self.total_categories
@@ -60,3 +75,20 @@ class Category:
             raise ValueError("Продукт должен быть объектом класса Product")
         self.__products.append(product)
         Category.total_products += 1
+
+
+class CategoryIterator:
+    def __init__(self, category):
+        self.category = category
+        self.index = 0
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.index < len(self.category._Category__products):
+            product = self.category._Category__products[self.index]
+            self.index += 1
+            return product
+        else:
+            raise StopIteration

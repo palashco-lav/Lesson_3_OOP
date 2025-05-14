@@ -1,7 +1,7 @@
 from io import StringIO
 from unittest.mock import patch
 
-from src.category import Category
+from src.category import Category, CategoryIterator
 from src.product import Product
 
 
@@ -134,3 +134,48 @@ def test_get_product_info():
     with patch("sys.stdout", new=StringIO()) as fake_out:
         print(category.get_product_info)
         assert fake_out.getvalue().strip() == expected_output.strip()
+
+
+def test_str():
+    # Создаём несколько продуктов
+    product1 = Product("Смартфон", "Современный смартфон с большим экраном", 1000.0, 10)
+    product2 = Product("Ноутбук", "Мощный ноутбук для работы", 5000.0, 5)
+
+    # Создаём категорию и добавляем продукты
+    category = Category("Электроника", "Электронные устройства", [product1, product2])
+
+    # Проверяем вывод информации о категории
+    expected_str = "Электроника, количество продуктов: 15"
+    assert str(category) == expected_str
+
+
+def test_category_iterator():
+    # Создаём несколько продуктов
+    product1 = Product("Смартфон", "Современный смартфон с большим экраном", 1000.0, 10)
+    product2 = Product("Ноутбук", "Мощный ноутбук для работы", 5000.0, 5)
+
+    # Создаём категорию и добавляем продукты
+    category = Category("Электроника", "Электронные устройства", [product1, product2])
+
+    # Создаём итератор для категории
+    category_iterator = CategoryIterator(category)
+
+    # Проверяем итерацию по товарам
+    products = []
+    for product in category_iterator:
+        products.append(product)
+
+    assert products == [product1, product2]
+
+
+def test_products_property():
+    # Создаём несколько продуктов
+    product1 = Product("Смартфон", "Современный смартфон с большим экраном", 1000.0, 10)
+    product2 = Product("Ноутбук", "Мощный ноутбук для работы", 5000.0, 5)
+
+    # Создаём категорию и добавляем продукты
+    category = Category("Электроника", "Электронные устройства", [product1, product2])
+
+    # Проверяем свойство products
+    expected_products_info = f"{product1}\n" f"{product2}\n"
+    assert category.products == expected_products_info
