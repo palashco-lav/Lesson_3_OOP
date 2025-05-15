@@ -71,8 +71,13 @@ class Category:
         return result
 
     def add_product(self, product: Product):
-        if not isinstance(product, Product):
-            raise ValueError("Продукт должен быть объектом класса Product")
+        #
+        if not isinstance(product, Product) and not issubclass(
+            product.__class__, Product
+        ):
+            raise ValueError(
+                "Продукт должен быть объектом или подклассом класса Product"
+            )
         self.__products.append(product)
         Category.total_products += 1
 
