@@ -31,6 +31,10 @@ class Product:
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity}"
 
     def __add__(self, other):
+        if type(self) != type(other):
+            raise TypeError(
+                f"Для сложения типы переменных должны совпадать {type(self)} != {type(other)}"
+            )
         return self.quantity * self.__price + other.quantity * other.__price
 
     @property
@@ -78,7 +82,7 @@ class Product:
                         product.price = price
                     return product
 
-        return cls(name, description, price, quantity)
+        return cls(**product_data)  # cls(name, description, price, quantity)
 
 
 class Smartphone(Product):
@@ -121,13 +125,6 @@ class Smartphone(Product):
             raise ValueError("Цвет должен быть непустой строкой")
         self.color = color
 
-    def __add__(self, other):
-        if type(self) != type(other):
-            raise TypeError(
-                f"Для сложения типы переменных должны совпадать {type(self)} != {type(other)}"
-            )
-        return self.quantity * self.__price + other.quantity * other.__price
-
 
 class LawnGrass(Product):
     country: str  # страна-производитель
@@ -159,10 +156,3 @@ class LawnGrass(Product):
         if not isinstance(color, str) or not color:
             raise ValueError("Цвет должен быть непустой строкой")
         self.color = color
-
-    def __add__(self, other):
-        if type(self) != type(other):
-            raise TypeError(
-                f"Для сложения типы переменных должны совпадать {type(self)} != {type(other)}"
-            )
-        return self.quantity * self.__price + other.quantity * other.__price
