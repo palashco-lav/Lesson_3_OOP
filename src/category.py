@@ -1,40 +1,61 @@
+from abc import ABC, abstractmethod
+from typing import List
+
 from src.product import Product
 
 
-class Category:
-    # Атрибуты класса для хранения общей информации
+class BaseEntity(ABC):
+    """Абстрактный базовый класс для сущностей работы с продуктами"""
+
+    @abstractmethod
+    def validate_product(self, product: "Product"):
+        """Валидация продукта перед добавлением"""
+        pass
+
+    @abstractmethod
+    def calculate_total(self) -> float:
+        """Расчет общей метрики (стоимость/количество)"""
+        pass
+
+    @property
+    @abstractmethod
+    def display_info(self) -> str:
+        """Строковое представление информации"""
+        pass
+
+
+class Category(BaseEntity):
     total_categories = 0
     total_products = 0
 
-    name: str  # название
-    description: str  # описание
-    __products: list[Product]  # список товаров категории
-
-    def __init__(self, name, description, products):
-        # Валидация имени категории
+    def __init__(self, name: str, description: str, products: Product | List[Product]):
+        super().__init__()
         if not isinstance(name, str) or not name:
-            raise ValueError("Название категории должно быть непустой строкой")
+            raise ValueError("Некорректное название категории")
         self.name = name
 
-        # Валидация описания категории
         if not isinstance(description, str) or not description:
-            raise ValueError("Описание категории должно быть непустой строкой")
+            raise ValueError("Некорректное описание категории")
         self.description = description
 
-        # Валидация списка продуктов
-        if products:
-            if not isinstance(products, list):
-                raise ValueError("Список продуктов должен быть типа list")
-            for product in products:
-                if not isinstance(product, Product):
-                    raise ValueError(
-                        "Все элементы списка продуктов должны быть объектами класса Product"
-                    )
-        self.__products = products if products else []
+        if isinstance(products, list):
+            if any(not isinstance(p, Product) for p in products):
+                raise ValueError("Некорректный список продуктов")
+            self.__products = products.copy()
+            Category.total_products += len(self.__products)
+        elif isinstance(products, Product):
+            self.__products = products
+            Category.total_products += 1
+        elif products is None:
+            self.__products = None
+        else:
+            raise ValueError("Некорректный список продуктов")
 
-        # При создании нового объекта увеличиваем счетчики
         Category.total_categories += 1
-        Category.total_products += len(self.__products)
+
+    def validate_product(self, product: Product):
+        if not isinstance(product, Product):
+            raise ValueError("Объект должен быть экземпляром Product")
 
     def __str__(self):
         sum_products = 0
@@ -61,7 +82,10 @@ class Category:
 
     @property
     def category_product_count(self):
-        return len(self.__products)
+        if self.__products is None:
+            return 0
+        else:
+            return len(self.__products)
 
     @property
     def get_product_info(self):
@@ -81,6 +105,13 @@ class Category:
         self.__products.append(product)
         Category.total_products += 1
 
+    def calculate_total(self) -> float:
+        return sum(p.quantity for p in self.__products)
+
+    @property
+    def display_info(self) -> str:
+        return f"{self.name}, количество продуктов: {self.calculate_total()}"
+
 
 class CategoryIterator:
     def __init__(self, category):
@@ -97,3 +128,39 @@ class CategoryIterator:
             return product
         else:
             raise StopIteration
+
+
+class Order(BaseEntity):
+    def __init__(self, product: Product, quantity: int):
+        self.validate_product(product)
+        self._validate_quantity(product, quantity)
+
+        self.product = product
+        self.quantity = quantity
+        self.product.quantity -= quantity
+
+    def validate_product(self, product: Product):
+        if not hasattr(product, "price"):
+            raise AttributeError("Товар должен иметь атрибут 'price'")
+
+    def _validate_quantity(self, product: Product, quantity: int):
+        if quantity <= 0 or product.quantity < quantity:
+            raise ValueError("Некорректное количество товара")
+
+    def calculate_total(self) -> float:
+        return self.product.price * self.quantity
+
+    @property
+    def display_info(self) -> str:
+        return f"Заказ: {self.product.name} × {self.quantity} = {self.calculate_total():.2f} ₽"
+
+    def update_quantity(self, new_quantity: int):
+        """Обновление количества с пересчетом суммы"""
+        if new_quantity <= 0:
+            raise ValueError("Количество должно быть положительным числом")
+        self.product.quantity -= new_quantity - self.quantity
+        self.quantity = new_quantity
+        self.total = self.calculate_total()
+
+    def __repr__(self):
+        return f"Заказ: {self.product} × {self.quantity} = {self.total:.2f} ₽"

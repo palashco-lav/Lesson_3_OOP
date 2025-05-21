@@ -15,6 +15,11 @@ git clone https://github.com/palashco-lav/Lesson_3_OOP.git
 ```
 ## Реализовано:
 ### Модуль Product:
+    class LoggingMixin - ласс-миксин, при создании объекта печатает в консоль информацию о том, от какого класса и с 
+    какими параметрами был создан объект
+
+    class BaseProduct(ABC) - абстрактный класс, родительскиq для класса продуктов
+
 	class Product - хранит описание продукта
 			    name: str  # название
 				description: str  # описание
@@ -50,6 +55,9 @@ git clone https://github.com/palashco-lav/Lesson_3_OOP.git
 
 
 ### Модуль Category:
+    class BaseEntity(ABC):
+                Абстрактный базовый класс для сущностей работы с продуктами
+
 	class Category:
 				name: str               # название
 				description: str        # описание
@@ -89,6 +97,10 @@ git clone https://github.com/palashco-lav/Lesson_3_OOP.git
 
     class CategoryIterator:
                 сласс итератор для каталога продуктов
+
+    class Order(BaseEntity):
+                класс «Заказ», в котором содержится информация на то, какой товар был куплен, 
+                количество купленного товара, а также итоговая стоимость.
 
 ### Модуль utils:
     load_data_from_json(file_path) -> list[str]
@@ -149,6 +161,21 @@ git clone https://github.com/palashco-lav/Lesson_3_OOP.git
         Создаём экземпляр класса LawnGrass
         Проверяем атрибуты
 
+    def test_logging_mixin()
+        Проверяем логирование при создании объекта Product
+
+    def test_base_product_abstract_methods():
+        Попытка создать экземпляр абстрактного класса должна вызвать ошибку
+
+    def test_base_product_interface():
+        Проверяем, что все абстрактные методы присутствуют в Product
+
+    def test_logging_mixin_inheritance():
+        Проверяем, что миксин работает и с наследниками Product
+
+    def test_logging_mixin_multiple_inheritance():
+        Проверяем работу миксина при множественном наследовании
+
 ### Тестирование модуля category
     def test_category_init():
         Создаем тестовые продукты
@@ -205,6 +232,21 @@ git clone https://github.com/palashco-lav/Lesson_3_OOP.git
         Создаём несколько продуктов
         Создаём категорию и добавляем продукты
         Проверяем свойство products
+
+    def test_order_creation_with_valid_quantity():
+        Проверка созданием тестового заказа
+    
+    def test_order_with_negative_quantity_raises_error():
+        Проверка на некорректное кол-во товара
+
+    def test_update_quantity_changes_total():
+        проверка функционала о обновлении ко-ва проданного товара
+
+    def est_invalid_product_raises_attribute_error();
+        проверка на создание некорректного экземпляра продукта
+
+    def test_display_info_formatting():
+        Тетирование корректного выовда информации
 
 ## Документация:
 

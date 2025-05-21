@@ -1,6 +1,9 @@
+import sys
+from io import StringIO
 from unittest.mock import patch
 
-from src.product import LawnGrass, Product, Smartphone
+from src.product import (BaseProduct, LawnGrass, LoggingMixin, Product,
+                         Smartphone)
 
 
 def test_product_init():
@@ -13,7 +16,8 @@ def test_product_init():
     assert product.name == "iPhone 14"
     assert product.description == "Смартфон Apple"
     assert product.price == 79990.0
-    assert product.quantity == 10
+    test = product.quantity
+    assert test == 10
 
 
 def test_invalid_name():
@@ -211,3 +215,114 @@ def test_lawn_grass():
     assert lawn_grass.country == "Россия"
     assert lawn_grass.germination_period == 30
     assert lawn_grass.color == "Зеленый"
+
+
+def test_logging_mixin():
+    original_stdout = sys.stdout
+    sys.stdout = StringIO()  # Перенаправляем вывод
+    # Проверяем логирование при создании объекта Product
+    product = Product("Продукт1", "Описание", 100.0, 10)
+
+    captured_output = sys.stdout.getvalue()
+    assert (
+        "Создан объект класса 'Продукт1', описание: 'Описание', цена: 100.0, кол-во 10\n"
+        == captured_output
+    )
+    sys.stdout = original_stdout
+
+
+def test_base_product_abstract_methods():
+    try:
+        # Попытка создать экземпляр абстрактного класса должна вызвать ошибку
+        BaseProduct("Название", "Описание", 100.0, 10)
+    except TypeError as e:
+        assert (
+            "Can't instantiate abstract class BaseProduct without an implementation for "
+            "abstract methods '__add__', '__init__', '__str__', 'new_product', 'price'"
+            in str(e)
+        )
+
+
+def test_base_product_interface():
+    # Проверяем, что все абстрактные методы присутствуют в Product
+    product = Product("Продукт", "Описание", 100.0, 10)
+
+    # Проверяем реализацию __str__
+    assert str(product) == "Продукт, 100.0 руб. Остаток: 10"
+
+    # Проверяем реализацию price getter
+    assert product.price == 100.0
+
+    # Проверяем реализацию price setter
+    product.price = 150.0
+    assert product.price == 150.0
+
+    # Проверяем реализацию new_product
+    new_product_data = {
+        "name": "Новый продукт",
+        "description": "Новое описание",
+        "price": 200.0,
+        "quantity": 5,
+    }
+    new_product = Product.new_product(new_product_data)
+    assert new_product.name == "Новый продукт"
+    assert new_product.price == 200.0
+    assert new_product.quantity == 5
+
+    # Проверяем реализацию __add__
+    another_product = Product("Другой продукт", "Описание", 150.0, 3)
+    assert product + another_product == 1950.0
+
+
+def test_logging_mixin_inheritance():
+    original_stdout = sys.stdout
+    sys.stdout = StringIO()
+    # Проверяем, что миксин работает и с наследниками Product
+    smartphone = Smartphone(
+        "Iphone 14",
+        "Смартфон с улучшенными характеристиками",
+        1000.0,
+        5,
+        8.5,
+        "14 Pro Max",
+        256,
+        "Black",
+    )
+    assert (
+        "Создан объект класса 'Iphone 14', описание: 'Смартфон с улучшенными характеристиками', цена: 1000.0, кол-во 5\n"
+    ) in sys.stdout.getvalue()
+    lawn_grass = LawnGrass(
+        "Трава для газона",
+        "Высококачественная трава для газона",
+        50.0,
+        10,
+        "Россия",
+        30,
+        "Зеленый",
+    )
+    # test_data = sys.stdout.getvalue()
+    assert (
+        "Создан объект класса 'Трава для газона', описание: 'Высококачественная трава для газона', цена: 50.0, кол-во 10"
+        in sys.stdout.getvalue()
+    )
+    sys.stdout = original_stdout
+
+
+def test_logging_mixin_multiple_inheritance():
+    original_stdout = sys.stdout
+    sys.stdout = StringIO()
+
+    # Проверяем работу миксина при множественном наследовании
+    class TestProduct(Product, LoggingMixin):
+        def __init__(self, *args, **kwargs):
+            # super().__init__(*args, **kwargs)
+            Product.__init__(self, *args, **kwargs)
+            LoggingMixin.__init__(self, *args, **kwargs)
+
+    test_product = TestProduct("Тестовый продукт", "Описание", 200.0, 15)
+    test_message = sys.stdout.getvalue()
+    assert (
+        "Создан объект класса 'Тестовый продукт', описание: 'Описание', цена: 200.0, кол-во 15\n"
+        in test_message
+    )
+    sys.stdout = original_stdout
