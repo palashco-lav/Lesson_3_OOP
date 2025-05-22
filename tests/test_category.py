@@ -1,7 +1,9 @@
 from io import StringIO
 from unittest.mock import patch
 
-from src.category import Category, CategoryIterator
+import pytest
+
+from src.category import Category, CategoryIterator, Order
 from src.product import Product
 
 
@@ -185,3 +187,63 @@ def test_products_property():
     # Проверяем свойство products
     expected_products_info = f"{product1}\n" f"{product2}\n"
     assert category.products == expected_products_info
+
+
+def test_order_creation_with_valid_quantity():
+    # Arrange
+    product = Product("Ноутбук", "Мощный", 1000.0, 5)
+
+    # Act
+    order = Order(product, 2)
+
+    # Assert
+    assert order.quantity == 2
+    assert product.quantity == 3  # Проверка уменьшения остатка
+    assert order.calculate_total() == 2000.0
+
+
+def test_order_with_negative_quantity_raises_error():
+    # Arrange
+    product = Product("Телефон", "Стильный", 500.0, 10)
+
+    # Act & Assert
+    with pytest.raises(ValueError, match="Некорректное количество товара"):
+        Order(product, -1)
+
+
+def test_update_quantity_changes_total():
+    # Arrange
+    product = Product("Планшет", "Красненький!", 300.0, 8)
+    order = Order(product, 3)
+
+    # Act
+    order.update_quantity(4)
+
+    # Assert
+    assert order.quantity == 4
+    assert order.calculate_total() == 1200.0
+    assert product.quantity == 4  # 8 - 3 - (4-3) = 4
+
+
+def test_invalid_product_raises_attribute_error():
+    # Arrange
+    class FakeProduct:
+        pass
+
+    fake_product = FakeProduct()
+
+    # Act & Assert
+    with pytest.raises(AttributeError, match="атрибут 'price'"):
+        Order(fake_product, 1)
+
+
+def test_display_info_formatting():
+    # Arrange
+    product = Product("Часы", "Как у олигархов", 150.0, 20)
+    order = Order(product, 5)
+
+    # Act
+    info = order.display_info
+
+    # Assert
+    assert "Часы × 5 = 750.00 ₽" in info
