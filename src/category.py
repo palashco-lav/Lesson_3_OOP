@@ -112,6 +112,18 @@ class Category(BaseEntity):
     def display_info(self) -> str:
         return f"{self.name}, количество продуктов: {self.calculate_total()}"
 
+    def middle_price(self) -> float:
+        # если кол-во товаров категории нулевое - возвращаю ноль
+        if (
+            self.__products == None
+            or self.__products == []
+            or len(self.__products) == 0
+        ):
+            return 0
+        # подсчета среднего ценника всех товаров в классе Category
+        # суммарная стоимость всех категорий товаров, делим на кол-во категорий товаров
+        return sum(p.price for p in self.__products) / len(self.__products)
+
 
 class CategoryIterator:
     def __init__(self, category):

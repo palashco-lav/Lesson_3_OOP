@@ -87,7 +87,9 @@ class Product(BaseProduct, LoggingMixin):
 
         # Валидация количества
         if not isinstance(quantity, int) or quantity < 0:
-            raise ValueError("Количество должно быть положительным целым числом")
+            raise ValueError("Товар с отрицательным количеством не может быть добавлен")
+        elif quantity == 0:
+            raise ValueError("Товар с нулевым количеством не может быть добавлен")
         self.quantity = quantity
 
     def __str__(self) -> str:

@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="09d26259-e061-41fc-aad3-be8f53691e2a" name="Changes" comment="Выполнение ДЗ 16.1">
-      <change beforePath="$PROJECT_DIR$/.idea/Lesson_3_OOP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Lesson_3_OOP.iml" afterDir="false" />
+    <list default="true" id="09d26259-e061-41fc-aad3-be8f53691e2a" name="Changes" comment="Выполнение ДЗ 16.2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/category.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/category.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/product.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/product.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/test_category.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_category.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/test_product.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_product.py" afterDir="false" />
@@ -28,7 +28,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="homework_16.1" />
+        <entry key="$PROJECT_DIR$" value="homework_16.2" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -84,10 +84,12 @@
     "Python tests.Python tests in test_product.py.executor": "Debug",
     "Python tests.Python tests in test_product_catalog.py.executor": "Debug",
     "Python tests.pytest for test_category.test_add_product.executor": "Run",
+    "Python tests.pytest for test_category.test_calculate_average_price.executor": "Run",
     "Python tests.pytest for test_category.test_category_without_products.executor": "Run",
     "Python tests.pytest for test_category.test_invalid_init.executor": "Run",
     "Python tests.pytest for test_category.test_order_creation_with_valid_quantity.executor": "Run",
     "Python tests.pytest for test_category.test_update_quantity_changes_total.executor": "Debug",
+    "Python tests.pytest for test_product.test_invalid_quantity.executor": "Run",
     "Python tests.pytest for test_product.test_logging_mixin.executor": "Run",
     "Python tests.pytest for test_product.test_logging_mixin_inheritance.executor": "Run",
     "Python tests.pytest for test_product.test_logging_mixin_multiple_inheritance.executor": "Run",
@@ -96,7 +98,7 @@
     "Python.main.executor": "Run",
     "Python.test_product_catalog.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "homework__16.2",
+    "git-widget-placeholder": "homework__17.1",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -107,8 +109,8 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration name="pytest for test_category.test_category_without_products" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python tests.pytest for test_category.test_calculate_average_price">
+    <configuration name="pytest for test_category.test_calculate_average_price" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="Lesson_3_OOP" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -122,7 +124,7 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_category.test_category_without_products&quot;" />
+      <option name="_new_target" value="&quot;test_category.test_calculate_average_price&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -180,39 +182,38 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest in test_product.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for test_product.test_invalid_quantity" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="Lesson_3_OOP" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Poetry (Lesson_3_OOP)" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/test_product.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <option name="_new_target" value="&quot;test_product.test_invalid_quantity&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python tests.pytest for test_category.test_category_without_products" />
+      <item itemvalue="Python tests.pytest for test_category.test_calculate_average_price" />
       <item itemvalue="Python tests.pytest for test_category.test_invalid_init" />
       <item itemvalue="Python tests.pytest for test_category.test_order_creation_with_valid_quantity" />
       <item itemvalue="Python tests.pytest for test_category.test_update_quantity_changes_total" />
-      <item itemvalue="Python tests.pytest in test_product.py" />
+      <item itemvalue="Python tests.pytest for test_product.test_invalid_quantity" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.pytest for test_category.test_calculate_average_price" />
+        <item itemvalue="Python tests.pytest for test_product.test_invalid_quantity" />
         <item itemvalue="Python tests.pytest for test_category.test_update_quantity_changes_total" />
         <item itemvalue="Python tests.pytest for test_category.test_order_creation_with_valid_quantity" />
         <item itemvalue="Python tests.pytest for test_category.test_invalid_init" />
-        <item itemvalue="Python tests.pytest for test_category.test_category_without_products" />
-        <item itemvalue="Python tests.pytest in test_product.py" />
       </list>
     </recent_temporary>
   </component>
@@ -240,7 +241,7 @@
       <workItem from="1747690380636" duration="2311000" />
       <workItem from="1747692724307" duration="3720000" />
       <workItem from="1747697068410" duration="2087000" />
-      <workItem from="1747781687882" duration="7531000" />
+      <workItem from="1747781687882" duration="8711000" />
     </task>
     <task id="LOCAL-00001" summary="Первая версия">
       <option name="closed" value="true" />
@@ -314,7 +315,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747319892656</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Выполнение ДЗ 16.2">
+      <option name="closed" value="true" />
+      <created>1747871586657</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1747871586657</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -331,7 +340,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="homework_16.2" />
+                        <option value="homework_17.1" />
                       </list>
                     </value>
                   </entry>
@@ -350,7 +359,8 @@
     <MESSAGE value="Выполнение ДЗ 14.2" />
     <MESSAGE value="Выполнение ДЗ 14.3" />
     <MESSAGE value="Выполнение ДЗ 16.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Выполнение ДЗ 16.1" />
+    <MESSAGE value="Выполнение ДЗ 16.2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Выполнение ДЗ 16.2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -367,33 +377,23 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tests/test_product.py</url>
-          <line>272</line>
+          <line>278</line>
           <option name="timeStamp" value="32" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tests/test_product.py</url>
-          <line>290</line>
+          <line>296</line>
           <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tests/test_product.py</url>
-          <line>310</line>
+          <line>316</line>
           <option name="timeStamp" value="41" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tests/test_product.py</url>
-          <line>226</line>
+          <line>232</line>
           <option name="timeStamp" value="45" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/category.py</url>
-          <line>84</line>
-          <option name="timeStamp" value="54" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/category.py</url>
-          <line>32</line>
-          <option name="timeStamp" value="55" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tests/test_category.py</url>
@@ -421,21 +421,17 @@
           <option name="timeStamp" value="61" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/tests/test_category.py</url>
-          <line>219</line>
-          <option name="timeStamp" value="62" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/tests/test_category.py</url>
-          <line>215</line>
-          <option name="timeStamp" value="63" />
+          <url>file://$PROJECT_DIR$/src/category.py</url>
+          <line>116</line>
+          <option name="timeStamp" value="69" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Lesson_3_OOP$pytest_in_test_product_py.coverage" NAME="pytest in test_product.py Coverage Results" MODIFIED="1747869008385" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/Lesson_3_OOP$main.coverage" NAME="main Coverage Results" MODIFIED="1747264546240" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/Lesson_3_OOP$main.coverage" NAME="main Coverage Results" MODIFIED="1747871606808" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/Lesson_3_OOP$pytest_for_test_category_test_calculate_average_price.coverage" NAME="pytest for test_category.test_calculate_average_price Coverage Results" MODIFIED="1747958072469" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/Lesson_3_OOP$pytest_for_test_category_test_category_without_products.coverage" NAME="pytest for test_category.test_category_without_products Coverage Results" MODIFIED="1747869573264" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/Lesson_3_OOP$pytest_for_test_product_test_logging_mixin.coverage" NAME="pytest for test_product.test_logging_mixin Coverage Results" MODIFIED="1747784487514" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/Lesson_3_OOP$pytest_for_test_category_test_add_product.coverage" NAME="pytest for test_category.test_add_product Coverage Results" MODIFIED="1747781744894" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
@@ -446,6 +442,7 @@
     <SUITE FILE_PATH="coverage/Lesson_3_OOP$.coverage" NAME=" Coverage Results" MODIFIED="1747781942931" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/Lesson_3_OOP$test_product_catalog.coverage" NAME="test_product_catalog Coverage Results" MODIFIED="1747080684270" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/Lesson_3_OOP$pytest_in_test_category_py.coverage" NAME="pytest in test_category.py Coverage Results" MODIFIED="1747870724067" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/Lesson_3_OOP$pytest_for_test_product_test_invalid_quantity.coverage" NAME="pytest for test_product.test_invalid_quantity Coverage Results" MODIFIED="1747957896419" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/Lesson_3_OOP$pytest_for_test_product_test_logging_mixin_multiple_inheritance.coverage" NAME="pytest for test_product.test_logging_mixin_multiple_inheritance Coverage Results" MODIFIED="1747784437089" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
   </component>
 </project>

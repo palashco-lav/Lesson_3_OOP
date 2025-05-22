@@ -189,6 +189,17 @@ def test_products_property():
     assert category.products == expected_products_info
 
 
+def test_middle_price():
+    # Создаём несколько продуктов
+    product1 = Product("Смартфон", "Современный смартфон с большим экраном", 4000.0, 10)
+    product2 = Product("Ноутбук", "Мощный ноутбук для работы", 2000.0, 5)
+
+    # Создаём категорию и добавляем продукты
+    category = Category("Электроника", "Электронные устройства", [product1, product2])
+
+    assert category.middle_price() == 3000.0
+
+
 def test_order_creation_with_valid_quantity():
     # Arrange
     product = Product("Ноутбук", "Мощный", 1000.0, 5)

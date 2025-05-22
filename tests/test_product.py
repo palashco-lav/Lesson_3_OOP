@@ -79,6 +79,12 @@ def test_invalid_quantity():
     except ValueError:
         pass
 
+    try:
+        Product("Продукт", "Описание", 10.0, 0)
+        assert False, "Должна быть ошибка при нулевом количестве"
+    except ValueError:
+        pass
+
 
 def test_change_attributes():
     # Создаем продукт для проверки изменения атрибутов
