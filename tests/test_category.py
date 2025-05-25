@@ -3,7 +3,7 @@ from unittest.mock import patch
 
 import pytest
 
-from src.category import Category, CategoryIterator, Order
+from src.category import Category, CategoryIterator, Order, ZeroQuantity
 from src.product import Product
 
 
@@ -110,21 +110,25 @@ def test_add_product():
     product2 = Product("Ноутбук", "Мощный ноутбук для работы", 5000.0, 5)
 
     # Создаём категорию
-    category = Category("Электроника", "Электронные устройства", [])
+    category_test_add = Category("Электроника", "Электронные устройства", [])
 
     # Добавляем продукты в категорию
-    category.add_product(product1)
-    category.add_product(product2)
+    category_test_add.add_product(product1)
+    category_test_add.add_product(product2)
 
     # Проверяем, что продукты были добавлены
-    assert product1 in category._Category__products
-    assert product2 in category._Category__products
+    assert product1 in category_test_add._Category__products
+    assert product2 in category_test_add._Category__products
 
     # Проверяем общее количество продуктов в категории
-    assert category.category_product_count == 2
+    assert category_test_add.category_product_count == 2
 
     # Проверяем общее количество товаров во всех категориях
     assert Category.total_products == 7
+
+    with pytest.raises(ZeroQuantity) as exc_info:
+        product3 = Product("Планшет", "Стильный", 5000.0, 0)
+        category_test_add.add_product(product3)
 
 
 def test_get_product_info():
@@ -189,6 +193,17 @@ def test_products_property():
     assert category.products == expected_products_info
 
 
+def test_middle_price():
+    # Создаём несколько продуктов
+    product1 = Product("Смартфон", "Современный смартфон с большим экраном", 4000.0, 10)
+    product2 = Product("Ноутбук", "Мощный ноутбук для работы", 2000.0, 5)
+
+    # Создаём категорию и добавляем продукты
+    category = Category("Электроника", "Электронные устройства", [product1, product2])
+
+    assert category.middle_price() == 3000.0
+
+
 def test_order_creation_with_valid_quantity():
     # Arrange
     product = Product("Ноутбук", "Мощный", 1000.0, 5)
@@ -209,6 +224,9 @@ def test_order_with_negative_quantity_raises_error():
     # Act & Assert
     with pytest.raises(ValueError, match="Некорректное количество товара"):
         Order(product, -1)
+
+    with pytest.raises(ValueError, match="Некорректное количество товара"):
+        Order(product, 0)
 
 
 def test_update_quantity_changes_total():

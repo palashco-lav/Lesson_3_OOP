@@ -233,6 +233,11 @@ git clone https://github.com/palashco-lav/Lesson_3_OOP.git
         Создаём категорию и добавляем продукты
         Проверяем свойство products
 
+    def test_middle_price():
+        Создаём несколько продуктов
+        Создаём категорию и добавляем продукты
+        Проверяем вычиследние средней стоимости продуктов        
+
     def test_order_creation_with_valid_quantity():
         Проверка созданием тестового заказа
     
